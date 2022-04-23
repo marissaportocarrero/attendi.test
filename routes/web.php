@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Route::get('/', 'ConnectController@getLogin');
 
 // Routes Auth
@@ -26,3 +27,8 @@ Route::get('/reset', 'ConnectController@getReset')->name('reset');
 Route::post('/reset', 'ConnectController@postReset')->name('reset');
 Route::get('/logout', 'ConnectController@getLogout')->name('logout');
 
+Route::get('/attendance/fecha', 'PDFController@index')->name('attendance.index');
+Route::post('/attendance/store', 'PDFController@store')->name('attendance.store');
+Route::get('/attendance/pdf', 'PDFController@getAttendanceTardanza')->name('reporte.tardanza');
+
+Route::get('/attendance/excel', 'ExcelController@getAttendaceExcel')->name('excel.reporte');

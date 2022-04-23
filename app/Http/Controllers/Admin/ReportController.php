@@ -17,12 +17,12 @@ use Illuminate\Http\Request;
 
 class ReportController extends Controller
 {
-    public function __Construct(){
-
+    public function __Construct()
+    {
     }
 
-    public function getHome(){
+    public function getHome()
+    {
         return view('admin.reports.employees');
     }
-
 }

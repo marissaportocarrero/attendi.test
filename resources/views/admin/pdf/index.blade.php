@@ -12,11 +12,26 @@ $countA =count($asistencias);
             @csrf
             <div class="form-group d-flex align-items-center">
                 <label for="finicio" class="label" style="width: 120px; margin-bottom: 0">Fecha Inicio</label>
-                <input type="date" id="finicio" name="finicio" class="ml-10 form-control">
+                <div>
+                    <input type="date" id="finicio" name="finicio" class="ml-10 form-control">
+                    @error('finicio')
+                    <span class="invalid-feedback d-block" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                </div>
             </div>
+
             <div class="form-group d-flex ml-5 align-items-center">
                 <label for="ffinal" class="label" style="width: 120px; margin-bottom: 0">Fecha Final</label>
-                <input type="date" id="ffinal" name="ffinal" class="ml-10 form-control">
+                <div>
+                    <input type="date" id="ffinal" name="ffinal" class="ml-10 form-control">
+                    @error('ffinal')
+                    <span class="invalid-feedback d-block" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                </div>
             </div>
             <div class="form-group d-flex ml-5 align-items-center">
                 <button type="submit" class="btn btn-primary">Buscar</button>

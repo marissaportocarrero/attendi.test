@@ -13,7 +13,8 @@ $countA =count($asistencias);
             <div class="form-group d-flex align-items-center">
                 <label for="finicio" class="label" style="width: 120px; margin-bottom: 0">Fecha Inicio</label>
                 <div>
-                    <input type="date" id="finicio" name="finicio" class="ml-10 form-control">
+                    <input type="date" id="finicio" name="finicio" class="ml-10 form-control"
+                        value=" {{ old('finicio', date('Y-m-d')) }} " required>
                     @error('finicio')
                     <span class="invalid-feedback d-block" role="alert">
                         <strong>{{ $message }}</strong>
@@ -25,7 +26,8 @@ $countA =count($asistencias);
             <div class="form-group d-flex ml-5 align-items-center">
                 <label for="ffinal" class="label" style="width: 120px; margin-bottom: 0">Fecha Final</label>
                 <div>
-                    <input type="date" id="ffinal" name="ffinal" class="ml-10 form-control">
+                    <input type="date" id="ffinal" name="ffinal" class="ml-10 form-control"
+                        value=" {{ old('ffinal', date('Y-m-d')) }} " required>
                     @error('ffinal')
                     <span class="invalid-feedback d-block" role="alert">
                         <strong>{{ $message }}</strong>
@@ -54,6 +56,14 @@ $countA =count($asistencias);
 
     @if($countA > 0)
     <div class="table-responsive">
+        <div>
+            <h1>Reporte:</h1>
+            <div class="d-flex">
+                <p class="mr-2">Fecha Inicio: <span>{{ $finicio }}</span></p>
+                -
+                <p class="ml-3">Fecha Final: <span>{{ $ffinal }}</span></p>
+            </div>
+        </div>
         <table class="table table-striped">
             <thead class="">
                 <tr>
@@ -89,6 +99,9 @@ $countA =count($asistencias);
                 @endforeach
             </tbody>
         </table>
+        {{-- <div class="col-12 mt-4 justify-content-center d-flex">
+            {{ $asistencias->links() }}
+        </div> --}}
     </div>
     @else
     <div class="alert alert-primary text-center" role="alert">

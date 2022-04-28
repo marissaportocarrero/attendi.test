@@ -1,53 +1,55 @@
 <!DOCTYPE html>
 <html lang="es">
-    <head>
 
-        <!-- META DATA -->
-        <meta charset="UTF-8">
-        <meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=0'>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
-        <meta name="routeName" content="{{ Route::currentRouteName() }}">
+<head>
 
-        <!-- TITLE -->
-        <title> @yield('title')</title>
+    <!-- META DATA -->
+    <meta charset="UTF-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=0'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="routeName" content="{{ Route::currentRouteName() }}">
+    <!-- TITLE -->
+    <title> @yield('title')</title>
 
-        @include('admin.layouts.styles')
+    @include('admin.layouts.styles')
 
-	</head>
+    @yield('cssdatable')
 
-	<body class="app sidebar-mini" id="index1">
+</head>
 
-		<!---Global-loader-->
-		<div id="global-loader" >
-			<img src="{{URL::asset('assets/images/svgs/loader.svg')}}" alt="loader">
-		</div>
+<body class="app sidebar-mini" id="index1">
 
-		<div class="page">
-			<div class="page-main">
+    <!---Global-loader-->
+    <div id="global-loader">
+        <img src="{{URL::asset('assets/images/svgs/loader.svg')}}" alt="loader">
+    </div>
 
-                @include('admin.layouts.sidebar')
+    <div class="page">
+        <div class="page-main">
 
-				<div class="app-content main-content">
-					<div class="side-app">
+            @include('admin.layouts.sidebar')
 
-                        @include('admin.layouts.header')
+            <div class="app-content main-content">
+                <div class="side-app">
 
-                        @yield('content')
+                    @include('admin.layouts.header')
 
-					</div>
-				</div><!-- end app-content-->
-			</div>
+                    @yield('content')
 
-            @include('admin.layouts.footer')
+                </div>
+            </div><!-- end app-content-->
+        </div>
 
-            @yield('modals')
+        @include('admin.layouts.footer')
 
-		</div>
+        @yield('modals')
 
-        @include('admin.layouts.scripts')
+    </div>
 
-	</body>
+    @include('admin.layouts.scripts')
+    @yield('jsdatatable')
+    @yield('ajax')
+</body>
+
 </html>
-
-

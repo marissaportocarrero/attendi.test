@@ -18,12 +18,12 @@ class PDFController extends Controller
     public function store(Request $request)
     {
         // Validacion
-        $data = $request->validate([
+        $request->validate([
             'finicio' => 'required',
             'ffinal' => 'required'
         ]);
 
-        $asistencias = Attendance::where('date', '>=', $request->finicio)->where('date', '<=', $request->ffinal)->get();
+        $asistencias = Attendance::where('date', '>=', $request->finicio)->where('date', '<=', $request->ffinal)->paginate(8);
 
         return view('admin.pdf.index')
             ->with("asistencias", $asistencias)

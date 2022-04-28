@@ -30,6 +30,13 @@
                         <ul class="sub-slide-menu">
                             <li><a class="sub-slide-item" href="{{ route('attendance.index') }}">Por Fecha</a></li>
                         </ul>
+                        <a class="sub-side-menu__item" data-toggle="sub-slide" href="#"><span
+                                class="sub-side-menu__label">Asistencia</span><i
+                                class="sub-angle fa fa-angle-right"></i></a>
+                        <ul class="sub-slide-menu">
+                            <li><a class="sub-slide-item" href="{{ route('general.index') }}">Reporte general</a>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
             </li>

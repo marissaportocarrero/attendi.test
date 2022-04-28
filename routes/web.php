@@ -29,6 +29,16 @@ Route::get('/logout', 'ConnectController@getLogout')->name('logout');
 
 Route::get('/attendance/fecha', 'PDFController@index')->name('attendance.index');
 Route::post('/attendance/store', 'PDFController@store')->name('attendance.store');
-Route::get('/attendance/pdf', 'PDFController@getAttendanceTardanza')->name('reporte.tardanza');
 
+// Route::get('/admin/reports', 'Admin\ReportController@getHome')->name('admin.reporte');
+// Exportacion
+Route::get('/attendance/pdf', 'PDFController@getAttendanceTardanza')->name('reporte.tardanza');
 Route::get('/attendance/excel', 'ExcelController@getAttendaceExcel')->name('excel.reporte');
+
+// Reporte
+
+// General
+Route::get("/attendance/reportegeneral", "ReporteController@reportegeneral")->name("general.index");
+
+Route::get("/attendance/reportgeneral/store", "ReporteController@resgeneral")->name("general.store");
+Route::get("/attendance/reportgeneral/getEmpresa", "ReporteController@getEmpresa")->name("empresa.all");

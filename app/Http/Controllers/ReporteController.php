@@ -7,6 +7,7 @@ use App\Http\Models\Enterprise;
 use App\Reporte;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use PDF;
 
 class ReporteController extends Controller
 {
@@ -94,21 +95,117 @@ class ReporteController extends Controller
 
     public function resgeneral(Request $request)
     {
+        $finicio = $_GET['finicio'] ?? null;
+        $ffinal = $_GET['ffinal'] ?? null;
+        if ($ffinal && $finicio) {
+            $data = DB::table('attendances')
+                ->join('employees', 'employees.id', '=', 'attendances.employee_id')
+                ->join('enterprises', 'enterprises.id', '=', 'employees.enterprise_id')
+                ->select(
+                    'employees.name as employees',
+                    'enterprises.name as enterprises',
+                    'attendances.date as date',
+                    'attendances.job_input as job_input',
+                    'attendances.job_output as job_output',
+                    'attendances.attendance as attendance'
+                )
+                ->where('attendances.date', '>=', $_GET['finicio'])->where('attendances.date', '<=', $_GET['ffinal'])
+                ->get();
+        } else {
+            $data = DB::table('attendances')
+                ->join('employees', 'employees.id', '=', 'attendances.employee_id')
+                ->join('enterprises', 'enterprises.id', '=', 'employees.enterprise_id')
+                ->select(
+                    'employees.name as employees',
+                    'enterprises.name as enterprises',
+                    'attendances.date as date',
+                    'attendances.job_input as job_input',
+                    'attendances.job_output as job_output',
+                    'attendances.attendance as attendance'
+                )->get();
+        }
 
-        $data = DB::table('attendances')
-            ->join('employees', 'employees.id', '=', 'attendances.employee_id')
-            ->join('enterprises', 'enterprises.id', '=', 'employees.enterprise_id')
-            ->select(
-                'employees.name as employees',
-                'enterprises.name as enterprises',
-                'attendances.date as date',
-                'attendances.job_input as job_input',
-                'attendances.job_output as job_output',
-                'attendances.attendance as attendance'
-            )
-            ->where('attendances.date', '>=', $_GET['finicio'])->where('attendances.date', '<=', $_GET['ffinal'])
-            ->get();
-        return response()->json(['data' => $data]);
+        return response()->json([
+            'data' => $data,
+            'finicio' => $finicio, 'ffinal' => $ffinal
+        ]);
+    }
+
+    public function pdfresgeneral()
+    {
+
+        $finicio = $_GET['finicio'] ?? null;
+        $ffinal = $_GET['ffinal'] ?? null;
+        if ($ffinal && $finicio) {
+            $data = DB::table('attendances')
+                ->join('employees', 'employees.id', '=', 'attendances.employee_id')
+                ->join('enterprises', 'enterprises.id', '=', 'employees.enterprise_id')
+                ->select(
+                    'employees.name as employees',
+                    'enterprises.name as enterprises',
+                    'attendances.date as date',
+                    'attendances.job_input as job_input',
+                    'attendances.job_output as job_output',
+                    'attendances.attendance as attendance'
+                )
+                ->where('attendances.date', '>=', $_GET['finicio'])->where('attendances.date', '<=', $_GET['ffinal'])
+                ->get();
+        } else {
+            $data = DB::table('attendances')
+                ->join('employees', 'employees.id', '=', 'attendances.employee_id')
+                ->join('enterprises', 'enterprises.id', '=', 'employees.enterprise_id')
+                ->select(
+                    'employees.name as employees',
+                    'enterprises.name as enterprises',
+                    'attendances.date as date',
+                    'attendances.job_input as job_input',
+                    'attendances.job_output as job_output',
+                    'attendances.attendance as attendance'
+                )->get();
+        }
+
+        $pdf = PDF::loadView('admin.pdf.reportegeneral', ['asistencias' => $data, 'asist' => $_GET['asist'] ?? null, 'emp' => $_GET['emp']]);
+        // ->setOptions(['isJavascriptEnabled ' => true, 'isPhpEnabled ' => true, 'isHtml5ParserEnabled ' => true]);
+        return $pdf
+            ->stream('reportegeneral.pdf');
+    }
+
+    public function pdfsub()
+    {
+        $finicio = $_GET['finicio'] ?? null;
+        $ffinal = $_GET['ffinal'] ?? null;
+        if ($ffinal && $finicio) {
+            $data = DB::table('attendances')
+                ->join('employees', 'employees.id', '=', 'attendances.employee_id')
+                ->join('enterprises', 'enterprises.id', '=', 'employees.enterprise_id')
+                ->select(
+                    'employees.name as employees',
+                    'enterprises.name as enterprises',
+                    'attendances.date as date',
+                    'attendances.job_input as job_input',
+                    'attendances.job_output as job_output',
+                    'attendances.attendance as attendance'
+                )
+                ->where('attendances.date', '>=', $_GET['finicio'])->where('attendances.date', '<=', $_GET['ffinal'])
+                ->get();
+        } else {
+            $data = DB::table('attendances')
+                ->join('employees', 'employees.id', '=', 'attendances.employee_id')
+                ->join('enterprises', 'enterprises.id', '=', 'employees.enterprise_id')
+                ->select(
+                    'employees.name as employees',
+                    'enterprises.name as enterprises',
+                    'attendances.date as date',
+                    'attendances.job_input as job_input',
+                    'attendances.job_output as job_output',
+                    'attendances.attendance as attendance'
+                )->get();
+        }
+
+        $pdf = PDF::loadView('admin.pdf.reporteAE', ['asistencias' => $data, 'asist' => $_GET['asist'] ?? null, 'emp' => $_GET['emp'] ?? null]);
+        // ->setOptions(['isJavascriptEnabled ' => true, 'isPhpEnabled ' => true, 'isHtml5ParserEnabled ' => true]);
+        return $pdf
+            ->stream('reportegeneral.pdf');
     }
 
     public function getEmpresa()

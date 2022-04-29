@@ -42,3 +42,8 @@ Route::get("/attendance/reportegeneral", "ReporteController@reportegeneral")->na
 
 Route::get("/attendance/reportgeneral/store", "ReporteController@resgeneral")->name("general.store");
 Route::get("/attendance/reportgeneral/getEmpresa", "ReporteController@getEmpresa")->name("empresa.all");
+
+// exportacion pdf y excel
+
+Route::get("/attendance/reportgeneral/pdf", "ReporteController@pdfresgeneral")->name('general.pdf');
+Route::get("/attendance/reportgeneral/pdf/sub", "ReporteController@pdfsub")->name('general.subpdf');

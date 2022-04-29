@@ -50,7 +50,7 @@
             @endif
             @endif
 
-            @if(!$_GET['asist'] && !$_GET['emp'])
+            @if(!$asistencia && !$empresa)
             <tr>
                 <td>{{ $a->employees }}</td>
                 <td> {{ $a->enterprises }} </td>
@@ -65,7 +65,7 @@
                 </td>
             </tr>
 
-            @elseif($asist == strtolower($asit))
+            @elseif($asistencia == strtolower($asit))
             <tr>
                 <td>{{ $a->employees }}</td>
                 <td> {{ $a->enterprises }} </td>
@@ -79,7 +79,7 @@
                     @endif
                 </td>
             </tr>
-            @elseif(strtolower($a->enterprises) == strtolower($emp))
+            @elseif(strtolower($a->enterprises) == strtolower($empresa))
             <tr>
                 <td>{{ $a->employees }}</td>
                 <td> {{ $a->enterprises }} </td>

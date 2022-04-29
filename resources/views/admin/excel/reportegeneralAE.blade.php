@@ -50,7 +50,7 @@
             @endif
             @endif
 
-            @if(!$_GET['asist'] && !$_GET['emp'])
+            @if(strtolower($a->enterprises) == strtolower($empresa) && $asistencia == strtolower($asit))
             <tr>
                 <td>{{ $a->employees }}</td>
                 <td> {{ $a->enterprises }} </td>
@@ -65,34 +65,6 @@
                 </td>
             </tr>
 
-            @elseif($asist == strtolower($asit))
-            <tr>
-                <td>{{ $a->employees }}</td>
-                <td> {{ $a->enterprises }} </td>
-                <td>{{ $a->date }}</td>
-                <td> {{ $a->job_input }} </td>
-                <td> {{ $a->job_output }} </td>
-                <td>{{ $asit }}</td>
-                <td>
-                    @if($hora >= 8 and $minuto > 0)
-                    {{(8 - $hora).':'.(0- $minuto).':'.(0 - $segundo)}}
-                    @endif
-                </td>
-            </tr>
-            @elseif(strtolower($a->enterprises) == strtolower($emp))
-            <tr>
-                <td>{{ $a->employees }}</td>
-                <td> {{ $a->enterprises }} </td>
-                <td>{{ $a->date }}</td>
-                <td> {{ $a->job_input }} </td>
-                <td> {{ $a->job_output }} </td>
-                <td>{{ $asit }}</td>
-                <td>
-                    @if($hora >= 8 and $minuto > 0)
-                    {{(8 - $hora).':'.(0- $minuto).':'.(0 - $segundo)}}
-                    @endif
-                </td>
-            </tr>
             @endif
             @endforeach
         </tbody>

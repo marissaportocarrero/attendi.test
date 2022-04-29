@@ -113,21 +113,26 @@
 
         const asist = document.querySelector('#asistencia').value;
         const emp = document.querySelector('#empresas').value;
-        let url;
+        let url, urlxls;
         if(!asist){
             tablaEmpresa(finicio, ffinal, emp)
             url = `/attendance/reportgeneral/pdf`;
+            urlxls = `/attendance/reportgeneral/xls`;
         }else if(!emp){
             tablaAsistencia(finicio, ffinal, asist);
             url = `/attendance/reportgeneral/pdf`;
+            urlxls = `/attendance/reportgeneral/xls`;
         }else if(emp && asist){
             tablaGeneral(finicio, ffinal, emp, asist)
             url = `/attendance/reportgeneral/pdf/sub`;
+            urlxls = `/attendance/reportgeneral/xls/sub`;
         }else{
             tablall(finicio, ffinal)
             url = `/attendance/reportgeneral/pdf`;
+            urlxls = `/attendance/reportgeneral/xls`;
         }
         btnpdf.href = url+`?finicio=${finicio}&ffinal=${ffinal}&asist=${asist}&emp=${emp}`;
+        btnexcel.href = urlxls +`?finicio=${finicio}&ffinal=${ffinal}&asist=${asist}&emp=${emp}`;
         limpiarHtml()
     });
 
@@ -137,18 +142,22 @@
         const inicio = finicio.textContent;
         const final = ffinal.textContent;
         const empresas = selectEmpresa.value ;
-        let url;
+        let url,urlxls;
         if(!empresas) {
             tablaAsistencia(inicio, final, e.target.value);
             url = `/attendance/reportgeneral/pdf`;
+            urlxls = `/attendance/reportgeneral/xls`;
         } else if(e.target.value == '') {
             tablaEmpresa(inicio,final,empresas)
             url = `/attendance/reportgeneral/pdf`;
+            urlxls = `/attendance/reportgeneral/xls`;
         }else {
             tablaGeneral(inicio, final, empresas,e.target.value);
             url = `/attendance/reportgeneral/pdf/sub`;
+            urlxls = `/attendance/reportgeneral/xls/sub`;
         }
-        btnpdf.href = `?finicio=${inicio}&ffinal=${final}&asist=${e.target.value}&emp=${empresas}`;
+        btnpdf.href = url+`?finicio=${inicio}&ffinal=${final}&asist=${e.target.value}&emp=${empresas}`;
+        btnexcel.href = urlxls +`?finicio=${inicio}&ffinal=${final}&asist=${e.target.value}&emp=${empresas}`;
     })
 
     $(document).on("change",'#empresas', function(e){
@@ -156,19 +165,23 @@
         const inicio = finicio.textContent;
         const final = ffinal.textContent;
         const asistencia = document.querySelector("#asistencia").value;
-        let url;
+        let url,urlxls;
         if(!asistencia) {
             console.log('error asi-empresa')
             tablaEmpresa(inicio,final,e.target.value)
             url = `/attendance/reportgeneral/pdf`;
+            urlxls = `/attendance/reportgeneral/xls`;
         } else if (e.target.value == ''){
             tablaAsistencia(inicio,final,asistencia);
             url = `/attendance/reportgeneral/pdf`;
+            urlxls = `/attendance/reportgeneral/xls`;
          }else {
             tablaGeneral(inicio, final, e.target.value, asistencia);
             url = `/attendance/reportgeneral/pdf/sub`;
+            urlxls = `/attendance/reportgeneral/xls/sub`;
         }
         btnpdf.href = url+`?finicio=${inicio}&ffinal=${final}&asist=${asistencia}&emp=${e.target.value}`;
+        btnexcel.href = urlxls +`?finicio=${inicio}&ffinal=${final}&asist=${asistencia}&emp=${e.target.value}`;
     })
 
     async function tablall(inicio, final){

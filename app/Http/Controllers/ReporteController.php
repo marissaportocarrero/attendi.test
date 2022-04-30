@@ -132,7 +132,7 @@ class ReporteController extends Controller
         $pdf = PDF::loadView('admin.pdf.reporteAE', ['asistencias' => $data, 'asist' => $_GET['asist'] ?? null, 'emp' => $_GET['emp'] ?? null]);
         // ->setOptions(['isJavascriptEnabled ' => true, 'isPhpEnabled ' => true, 'isHtml5ParserEnabled ' => true]);
         return $pdf
-            ->stream('reportegeneral.pdf');
+            ->download('reportegeneral.pdf');
     }
 
     public function getEmpresa()

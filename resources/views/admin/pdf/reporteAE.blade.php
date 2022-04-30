@@ -52,8 +52,8 @@
 
             @if(strtolower($a->enterprises) == strtolower($emp) && $asist == strtolower($asit))
             <tr>
-                <td>{{ $a->employees }}</td>
                 <td> {{ $a->enterprises }} </td>
+                <td>{{ $a->employees }}</td>
                 <td>{{ $a->date }}</td>
                 <td> {{ $a->job_input }} </td>
                 <td> {{ $a->job_output }} </td>

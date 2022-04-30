@@ -52,8 +52,8 @@
 
             @if(!$asistencia && !$empresa)
             <tr>
-                <td>{{ $a->employees }}</td>
                 <td> {{ $a->enterprises }} </td>
+                <td>{{ $a->employees }}</td>
                 <td>{{ $a->date }}</td>
                 <td> {{ $a->job_input }} </td>
                 <td> {{ $a->job_output }} </td>
@@ -81,8 +81,8 @@
             </tr>
             @elseif(strtolower($a->enterprises) == strtolower($empresa))
             <tr>
-                <td>{{ $a->employees }}</td>
                 <td> {{ $a->enterprises }} </td>
+                <td>{{ $a->employees }}</td>
                 <td>{{ $a->date }}</td>
                 <td> {{ $a->job_input }} </td>
                 <td> {{ $a->job_output }} </td>

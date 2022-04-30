@@ -52,8 +52,8 @@
 
             @if(!$_GET['asist'] && !$_GET['emp'])
             <tr>
-                <td>{{ $a->employees }}</td>
                 <td> {{ $a->enterprises }} </td>
+                <td>{{ $a->employees }}</td>
                 <td>{{ $a->date }}</td>
                 <td> {{ $a->job_input }} </td>
                 <td> {{ $a->job_output }} </td>

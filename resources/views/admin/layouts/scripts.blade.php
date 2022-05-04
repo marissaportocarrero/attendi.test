@@ -10,6 +10,7 @@
 <!-- Bootstrap4 js-->
 <script src="{{URL::asset('assets/plugins/bootstrap/popper.min.js')}}"></script>
 <script src="{{URL::asset('assets/plugins/bootstrap/js/bootstrap.min.js')}}"></script>
+{{-- <script src="{{URL::asset('assets/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script> --}}
 
 <!--Othercharts js-->
 <script src="{{URL::asset('assets/plugins/othercharts/jquery.sparkline.min.js')}}"></script>
@@ -30,7 +31,15 @@
 <!-- Select2 js -->
 <script src="{{URL::asset('assets/plugins/select2/select2.full.min.js')}}"></script>
 
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 @yield('scripts')
 
 <!-- Custom js-->
 <script src="{{URL::asset('assets/js/custom.js')}}"></script>
+<script src="https://unpkg.com/leaflet/dist/leaflet-src.js"></script>
+
+<script src="https://unpkg.com/esri-leaflet"></script>
+<script src="https://unpkg.com/esri-leaflet-geocoder"></script>
+
+{{-- <script src="https://unpkg.com/esri-leaflet-geocoder@3.0.0/dist/esri-leaflet-geocoder.js"></script> --}}

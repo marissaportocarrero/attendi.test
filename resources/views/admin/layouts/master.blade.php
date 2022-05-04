@@ -50,6 +50,7 @@
     @include('admin.layouts.scripts')
     @yield('jsdatatable')
     @yield('ajax')
+    @yield('apimaps')
 </body>
 
 </html>

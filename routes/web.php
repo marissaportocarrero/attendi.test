@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ConnectController;
 use Illuminate\Support\Facades\Route;
+use Maatwebsite\Excel\Row;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,3 +52,17 @@ Route::get("/attendance/reportgeneral/pdf/sub", "ReporteController@pdfsub")->nam
 // exportacion excel
 Route::get('/attendance/reportgeneral/xls', 'ReporteController@xlsresgeneral')->name('general.excel');
 Route::get('/attendance/reportgeneral/xls/sub', 'ReporteController@xlsresgeneral')->name('general.excelsub');
+
+// Empleados
+Route::get('/employees/all', 'EmployeesController@all')->name('employee.all');
+
+Route::get('/employee/create', 'EmployeesController@create')->name('employee.create');
+Route::post('/employee/store', 'EmployeesController@store')->name('employee.store');
+Route::get('/employee/{employee}', 'EmployeesController@show')->name('employee.show');
+// Route::put('/employee/{employee}', 'EmployeesController@update')->name('employee.update');
+Route::put('/employee', 'EmployeesController@update')->name('employee.update');
+
+
+// Reportes por empresas
+Route::get('/reportenterprises', 'ReporteEnterprisesController@index')->name('enterprisereport.index');
+Route::get('/reportenterprises/all', 'ReporteEnterprisesController@all')->name('enterprisereport.all');

@@ -427,75 +427,7 @@
 
 
         })
-        // data.forEach((d)=> {
-        //     const {employees, enterprises, date, job_input, job_output, attendance} = d;
 
-        //     const horaentrada = new Date(`${date} ${job_input}`);
-        //     const hour = parseInt(horaentrada.getHours());
-        //     const minute = parseInt(horaentrada.getMinutes());
-        //     const second = parseInt(horaentrada.getSeconds());
-        //     let tard;
-        //     if(hour >= 8 && minute > 0 && second > 0){
-        //         tard = `${ 8 - hour } : ${ 0 - minute} : ${ 0 - second}`;
-        //     }else {
-        //         tard = "";
-        //     }
-        //     let asist;
-        //     if(attendance == 0){
-        //         asist = 'Ausente';
-        //     }else {
-        //         if(hour >= 8 && minute > 0 && second > 0){
-        //             asist = `Tardanza`;
-        //         }else {
-        //             asist = "Presente ";
-        //         }
-        //     }
-
-        //     const tr = document.createElement('tr');
-
-        //     if(asistencia === asist.toLowerCase() && empresa === enterprises.toLowerCase()) {
-        //         tr.innerHTML = `
-        //         <td>${enterprises}</td>
-        //         <td>${employees}</td>
-        //         <td>${date}</td>
-        //         <td>${job_input}</td>
-        //         <td>${job_output}</td>
-        //         <td>${asist}</td>
-        //         <td>${tard}</td>
-        //         `;
-        //         console.log(empresa, enterprises.toLowerCase(),'1')
-        //         tbody.appendChild(tr)
-        //         return;
-        //     }
-
-        //     if((empresa === enterprises.toLowerCase() )){
-        //         tr.innerHTML = `
-        //         <td>${enterprises}</td>
-        //         <td>${employees}</td>
-        //         <td>${date}</td>
-        //         <td>${job_input}</td>
-        //         <td>${job_output}</td>
-        //         <td>${asist}</td>
-        //         <td>${tard}</td>
-        //         `;
-        //         console.log('empresa')
-        //     } else if((asistencia === asist.toLowerCase())){
-        //         tr.innerHTML = `
-        //         <td>${enterprises}</td>
-        //         <td>${employees}</td>
-        //         <td>${date}</td>
-        //         <td>${job_input}</td>
-        //         <td>${job_output}</td>
-        //         <td>${asist}</td>
-        //         <td>${tard}</td>
-        //         `;
-        //     }
-
-
-
-        //     tbody.appendChild(tr);
-        //     // console.log(asistencia === asist.toLowerCase() && empresa === enterprises.toLowerCase())
-        // });
     }
 
     async function getEmpresa(){
